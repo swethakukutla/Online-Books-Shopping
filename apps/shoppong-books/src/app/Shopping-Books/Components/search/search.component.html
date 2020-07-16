@@ -1,0 +1,28 @@
+<div class="search-content">
+  <mat-form-field class="example-full-width">
+    <mat-label>search in library</mat-label>
+    <input matInput #bookname placeholder="" value="">
+    <i class="material-icons searchIcon" (click)='getBooks(bookname.value)'>search</i>
+  </mat-form-field>
+</div>
+
+<div class="content" fxLayout="row wrap" fxLayoutGap="20px grid">
+  <div  *ngFor="let book of loadedBooks">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title (click)='onBookSelected(book.id)'>{{book.volumeInfo.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{book.volumeInfo.imageLinks?.smallThumbnail}}">
+      <mat-card-content>
+        <p>
+          {{book.volumeInfo.description}}
+        </p>
+        <p>Written By: </p>
+        <p>{{book.volumeInfo.publisher}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+

@@ -25,7 +25,10 @@
               "apps/shoppong-books/src/favicon.ico",
               "apps/shoppong-books/src/assets"
             ],
-            "styles": ["apps/shoppong-books/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/shoppong-books/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +86,10 @@
               "apps/shoppong-books/tsconfig.app.json",
               "apps/shoppong-books/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/shoppong-books/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shoppong-books/**/*"
+            ]
           }
         },
         "test": {
@@ -118,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/shoppong-books-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/shoppong-books-e2e/**/*"]
+            "tsConfig": [
+              "apps/shoppong-books-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/shoppong-books-e2e/**/*"
+            ]
           }
         }
       }
