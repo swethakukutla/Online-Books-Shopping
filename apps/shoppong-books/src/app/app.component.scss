@@ -4,9 +4,9 @@
 :host {
   display: block;
   font-family: sans-serif;
-  min-width: 300px;
-  max-width: 900px;
-  margin: 50px auto;
+  // min-width: 300px;
+  // max-width: 900px;
+  // margin: 50px auto;
 }
 
 .gutter-left {
@@ -132,6 +132,7 @@ summary {
   margin-right: 4px;
 }
 .example-container {
+  height: 88vh !important;
   position: relative;
   top: 0;
   bottom: 0;

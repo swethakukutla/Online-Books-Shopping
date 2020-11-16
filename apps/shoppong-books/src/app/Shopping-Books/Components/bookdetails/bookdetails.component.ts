@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Store } from '@ngrx/store';
+
 import { AddToCart } from '../../../store/books.actions';
 import { booksQuery } from '../../../store/books.selector';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { IBook } from '../../interfaces/books.interface';
 
 @Component({
@@ -23,7 +25,6 @@ export class BookdetailsComponent implements OnInit {
                 this.store.select(booksQuery.getAllBooks)
                 .subscribe(data => {
                   this.allBooks = data;
-                  console.log(this.allBooks)
                 })
               }
 

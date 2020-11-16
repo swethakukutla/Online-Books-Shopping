@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import * as BooksReducer  from './store/books.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ShopEffects } from './store/books.effects';
-// import { BooksFacade } from './store/books.fascade';
+import { BooksFacade } from './store/books.fascade';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +26,7 @@ import { PurchasedialogueboxComponent } from './Shopping-Books/Components/purcha
     EffectsModule.forRoot([ShopEffects]),StoreDevtoolsModule.instrument({ name: 'mybook' }),
     NoopAnimationsModule, AppRoutingModule, MatSidenavModule, MatListModule, HttpClientModule,
     MatToolbarModule, MatIconModule, FormsModule, ShoppingModule],
-  providers: [],
+  providers: [BooksFacade],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

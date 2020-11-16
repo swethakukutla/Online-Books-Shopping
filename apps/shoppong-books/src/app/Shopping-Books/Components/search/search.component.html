@@ -7,7 +7,7 @@
 </div>
 
 <div class="content" fxLayout="row wrap" fxLayoutGap="20px grid">
-  <div  *ngFor="let book of loadedBooks">
+  <div  *ngFor="let book of loadedBooks$ | async">
     <mat-card>
       <mat-card-header>
         <mat-card-title (click)='onBookSelected(book.id)'>{{book.volumeInfo.title}}</mat-card-title>

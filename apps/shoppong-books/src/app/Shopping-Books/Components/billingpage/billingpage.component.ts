@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PurchasedialogueboxComponent } from '../purchasedialoguebox/purchasedialoguebox.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Store } from '@ngrx/store';
+
+import { PurchasedialogueboxComponent } from '../purchasedialoguebox/purchasedialoguebox.component';
 import { AddBooksToCollection } from '../../../store/books.actions';
 import { booksQuery } from '../../../store/books.selector';
 import { IBook } from '../../interfaces/books.interface';
@@ -23,13 +25,11 @@ export class BillingpageComponent implements OnInit {
     address: '';
   }
 
-  constructor(private dialog: MatDialog,
-              private store: Store) {
-        this.store.select(booksQuery.getCartBooks)
-        .subscribe( data => {
-            this.cartBook = data;
-        })
-      }
+  constructor(private dialog: MatDialog, private store: Store) {
+    this.store.select(booksQuery.getCartBooks).subscribe( data => {
+      this.cartBook = data;
+    })
+  }
 
   ngOnInit(): void {
     this.addFormFieldValidations();

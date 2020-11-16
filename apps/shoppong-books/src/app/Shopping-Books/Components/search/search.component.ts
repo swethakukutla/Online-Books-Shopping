@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { searchbook } from '../../../store/books.actions';
-import { booksQuery } from '../../../store/books.selector';
 import { Router } from '@angular/router';
+import { BooksFacade } from '../../../store/books.fascade';
 
 @Component({
   selector: 'shopping-books-search',
@@ -10,19 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  loadedBooks: any;
-  constructor(private store: Store, private router: Router){
-      this.store.select(booksQuery.getAllBooks)
-        .subscribe(data => {
-          this.loadedBooks = data;
-        })
-  }
+  loadedBooks$: any;
+  constructor(private router: Router, private bookFacade: BooksFacade){}
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {
+     this.loadedBooks$ = this.bookFacade.allBooks$;
+  }
 
   getBooks(payload){
-     this.store.dispatch(searchbook({payload}));
+    this.bookFacade.searchedBook( payload );
   }
+
   onBookSelected(payload) {
     this.router.navigate(['/bookdetails/',payload]);
   }

@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +23,7 @@ import { ShoppingRoutingModule } from './shopping-routing.module';
 @NgModule({
   declarations: [SearchComponent, CartComponent, MycollectionComponent, BookdetailsComponent, BillingpageComponent],
   imports: [BrowserModule, FlexLayoutModule, NoopAnimationsModule, FormsModule, ReactiveFormsModule,
-    MatButtonModule, MatInputModule, MatIconModule, MatCardModule, MatDialogModule, Ng2SearchPipeModule, ShoppingRoutingModule],
+    MatButtonModule, MatInputModule, MatIconModule, MatCardModule, MatDialogModule,
+    MatSidenavModule, MatToolbarModule, Ng2SearchPipeModule, ShoppingRoutingModule],
 })
 export class ShoppingModule {}
