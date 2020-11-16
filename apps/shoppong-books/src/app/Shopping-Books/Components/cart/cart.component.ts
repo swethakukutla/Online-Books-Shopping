@@ -27,6 +27,7 @@ cartBooks$: any;
   }
 
   removeFromCart(id) {
-    this.store.dispatch(RemoveFromCart({payload: id}))
+    // this.store.dispatch(RemoveFromCart({payload: id}))
+    this.bookFacade.removedBook(id);
   }
 }

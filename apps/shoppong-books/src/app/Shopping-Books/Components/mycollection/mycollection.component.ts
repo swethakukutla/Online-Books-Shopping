@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { BooksFacade } from '../../../store/books.fascade';
 
 import { booksQuery } from '../../../store/books.selector';
 import { IBook } from '../../interfaces/books.interface';
@@ -10,15 +11,16 @@ import { IBook } from '../../interfaces/books.interface';
   styleUrls: ['./mycollection.component.css']
 })
 export class MycollectionComponent implements OnInit {
-  collectionBooks: IBook[];
-  constructor(private store: Store) {
-    this.store.select(booksQuery.getCollectionBooks)
-    .subscribe(data => {
-      this.collectionBooks = data;
-    })
+  collectionBooks$: any;
+  constructor(private store: Store, private bookFacade: BooksFacade) {
+    // this.store.select(booksQuery.getCollectionBooks)
+    // .subscribe(data => {
+    //   this.collectionBooks = data;
+    // })
   }
 
   ngOnInit(): void {
+    this.collectionBooks$ = this.bookFacade.collectionBooks$;
   }
 
 }

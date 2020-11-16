@@ -19,9 +19,10 @@ import { MycollectionComponent } from './Components/mycollection/mycollection.co
 import { BookdetailsComponent } from './Components/bookdetails/bookdetails.component';
 import { BillingpageComponent } from './Components/billingpage/billingpage.component';
 import { ShoppingRoutingModule } from './shopping-routing.module';
+import { PurchasedialogueboxComponent } from './Components/purchasedialoguebox/purchasedialoguebox.component';
 
 @NgModule({
-  declarations: [SearchComponent, CartComponent, MycollectionComponent, BookdetailsComponent, BillingpageComponent],
+  declarations: [SearchComponent, CartComponent, MycollectionComponent, BookdetailsComponent, BillingpageComponent, PurchasedialogueboxComponent],
   imports: [BrowserModule, FlexLayoutModule, NoopAnimationsModule, FormsModule, ReactiveFormsModule,
     MatButtonModule, MatInputModule, MatIconModule, MatCardModule, MatDialogModule,
     MatSidenavModule, MatToolbarModule, Ng2SearchPipeModule, ShoppingRoutingModule],

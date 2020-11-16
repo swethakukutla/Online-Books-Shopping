@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import { AddToCart } from '../../../store/books.actions';
 import { booksQuery } from '../../../store/books.selector';
 import { IBook } from '../../interfaces/books.interface';
+import { BooksFacade } from '../../../store/books.fascade';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'shopping-books-bookdetails',
@@ -14,26 +16,31 @@ import { IBook } from '../../interfaces/books.interface';
   styleUrls: ['./bookdetails.component.css']
 })
 export class BookdetailsComponent implements OnInit {
- allBooks: IBook[];
+ allBooks$: Observable<IBook[]>;
  selectedBook: IBook;
  selectedBookId: string;
 
   constructor(private router: Router,
               private store: Store,
               private actRoute: ActivatedRoute,
-              private dialog: MatDialog) {
-                this.store.select(booksQuery.getAllBooks)
-                .subscribe(data => {
-                  this.allBooks = data;
-                })
+              private dialog: MatDialog, private bookFacade: BooksFacade) {
+                // this.store.select(booksQuery.getAllBooks)
+                // .subscribe(data => {
+                //   this.allBooks = data;
+                // })
               }
 
   ngOnInit(): void {
+    this.allBooks$ = this.bookFacade.allBooks$;
     this.selectedBookId = this.actRoute.snapshot.params.id;
-    this.selectedBook = this.allBooks.find(book =>
-    book['id'] === this.selectedBookId)
-      this.selectedBook = Object.assign({}, this.selectedBook)
-   }
+    this.allBooks$.forEach(books => {
+      books.forEach(book => {
+        if (book['id'] === this.selectedBookId) {
+          this.selectedBook = Object.assign({}, book)
+        }
+      })
+    })
+  }
 
 
   addToCart(){

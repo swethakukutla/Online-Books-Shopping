@@ -1,5 +1,5 @@
 <div>
-  <mat-card *ngFor="let books of collectionBooks">
+  <mat-card *ngFor="let books of collectionBooks$ | async">
     <mat-card-header>
       <mat-card-title>{{books.bookinfo[0].volumeInfo.title}}</mat-card-title>
     </mat-card-header>
