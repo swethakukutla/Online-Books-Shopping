@@ -16,7 +16,7 @@ export const initialState: BooksState = bookAdapter.getInitialState({
   collectionItems: []
 });
 
-const booksReducer = createReducer(
+export const booksReducer = createReducer(
   initialState,
   on(Books.searchbook, (state, { payload }) => {
     return Object.assign({...state,
