@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { Store } from '@ngrx/store';
-
-import { booksQuery } from '../../../store/books.selector';
-import { RemoveFromCart } from '../../../store/books.actions';
 import { IBook } from '../../interfaces/books.interface';
 import { BooksFacade } from '../../../store/books.fascade';
 
@@ -14,10 +11,9 @@ import { BooksFacade } from '../../../store/books.fascade';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-cartBooks$: any;
+cartBooks$: Observable<IBook[]>;
 
-  constructor(private router: Router,
-              private store: Store,  private bookFacade: BooksFacade) {}
+  constructor(private router: Router, private bookFacade: BooksFacade) {}
 
   ngOnInit(): void {
     this.cartBooks$ = this.bookFacade.cartBooks$;
@@ -27,7 +23,6 @@ cartBooks$: any;
   }
 
   removeFromCart(id) {
-    // this.store.dispatch(RemoveFromCart({payload: id}))
     this.bookFacade.removedBook(id);
   }
 }

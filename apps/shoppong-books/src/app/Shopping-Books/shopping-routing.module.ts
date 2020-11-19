@@ -1,34 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CartComponent } from './Components/cart/cart.component';
-import { BillingpageComponent } from './Components/billingpage/billingpage.component';
-import { MycollectionComponent } from './Components/mycollection/mycollection.component';
-import { SearchComponent } from './Components/search/search.component';
-import { BookdetailsComponent } from './Components/bookdetails/bookdetails.component';
 
 const routes: Routes = [
   {
-    path: 'search-component',
-    component: SearchComponent
+    path: 'search',
+    loadChildren: () =>
+    import('../Shopping-Books/Components/search/search.module').then(m => m.SearchModule)
   },
   {
-    path: 'cart-component',
-    component: CartComponent
+    path: 'cart',
+    loadChildren: () =>
+    import('../Shopping-Books/Components/cart/cart.module').then(m => m.CartModule)
   },
   {
-    path: 'collection-component',
-    component: MycollectionComponent
+    path: 'collection',
+    loadChildren: () =>
+    import('../Shopping-Books/Components/mycollection/mycollection.module').then(m => m.MyCollectionModule)
   },
   {
     path: 'billingpage',
-    component: BillingpageComponent
+    loadChildren: () =>
+    import('../Shopping-Books/Components/billingpage/billingpage.module').then(m => m.BillingpageModule)
   },
   {
     path: 'bookdetails/:id',
-    component: BookdetailsComponent
+    loadChildren: () =>
+    import('../Shopping-Books/Components/bookdetails/bookdetails.module').then(m => m.BookdetailsModule)
   },
-  { path: '',redirectTo: "/search-component",pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: '',redirectTo: "/search",pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

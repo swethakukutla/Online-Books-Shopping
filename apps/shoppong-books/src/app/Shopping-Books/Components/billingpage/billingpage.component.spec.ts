@@ -128,14 +128,4 @@ describe('BillingpageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('clicking on cart icon it should remove book from cart', async() => {
-  //   const onSubmitClickedSpy = spyOn(component, 'onSubmit').and.callThrough();
-  //   component.onSubmit();
-  //   fixture.detectChanges();
-
-  //     expect(onSubmitClickedSpy).toHaveBeenCalled();
-
-
-  // });
 });

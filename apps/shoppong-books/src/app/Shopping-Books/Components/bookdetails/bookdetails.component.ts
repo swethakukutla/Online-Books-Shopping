@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
-import { Store } from '@ngrx/store';
-
-import { AddToCart } from '../../../store/books.actions';
-import { booksQuery } from '../../../store/books.selector';
 import { IBook } from '../../interfaces/books.interface';
 import { BooksFacade } from '../../../store/books.fascade';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'shopping-books-bookdetails',
@@ -21,14 +17,8 @@ export class BookdetailsComponent implements OnInit {
  selectedBookId: string;
 
   constructor(private router: Router,
-              private store: Store,
               private actRoute: ActivatedRoute,
-              private dialog: MatDialog, private bookFacade: BooksFacade) {
-                // this.store.select(booksQuery.getAllBooks)
-                // .subscribe(data => {
-                //   this.allBooks = data;
-                // })
-              }
+              private dialog: MatDialog, private bookFacade: BooksFacade) { }
 
   ngOnInit(): void {
     this.allBooks$ = this.bookFacade.allBooks$;
@@ -42,9 +32,8 @@ export class BookdetailsComponent implements OnInit {
     })
   }
 
-
-  addToCart(){
-    this.store.dispatch(AddToCart({payload: this.selectedBook}));
+  addToCart() {
+    this.bookFacade.addToCart(this.selectedBook);
   }
 
   goToBillingPage() {

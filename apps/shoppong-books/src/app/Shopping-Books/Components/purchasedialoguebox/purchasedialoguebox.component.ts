@@ -14,5 +14,4 @@ export class PurchasedialogueboxComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 }

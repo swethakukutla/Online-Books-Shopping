@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-
-import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 import { PurchasedialogueboxComponent } from '../purchasedialoguebox/purchasedialoguebox.component';
-import { AddBooksToCollection } from '../../../store/books.actions';
-import { booksQuery } from '../../../store/books.selector';
 import { IBook } from '../../interfaces/books.interface';
+import { BooksFacade } from '../../../store/books.fascade';
+import { AddBooksToCollection } from '../../../store/books.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'shopping-books-billingpage',
@@ -17,7 +17,7 @@ import { IBook } from '../../interfaces/books.interface';
 
 export class BillingpageComponent implements OnInit {
   billingForm: FormGroup;
-  cartBook: IBook[];
+  cartBook$: Observable <IBook[]>;
   billing: {
     name: '';
     email: '';
@@ -25,13 +25,11 @@ export class BillingpageComponent implements OnInit {
     address: '';
   }
 
-  constructor(private dialog: MatDialog, private store: Store) {
-    this.store.select(booksQuery.getCartBooks).subscribe( data => {
-      this.cartBook = data;
-    })
-  }
+
+  constructor(private dialog: MatDialog, private store: Store, private bookFacade: BooksFacade) { }
 
   ngOnInit(): void {
+    this.cartBook$ = this.bookFacade.cartBooks$;
     this.addFormFieldValidations();
   }
 
@@ -64,10 +62,10 @@ export class BillingpageComponent implements OnInit {
         name: '',
       }
     };
-    this.cartBook.forEach(book => {
+    this.cartBook$.forEach(book => {
       collection.bookinfo.push(book);
       collection.billingData = this.billing;
-      this.store.dispatch(AddBooksToCollection({payload: collection}));
+      this.bookFacade.addToCollection(collection);
     });
   }
 }

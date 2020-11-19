@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { BooksFacade } from '../../../store/books.fascade';
+import { IBook } from '../../interfaces/books.interface';
 
 @Component({
   selector: 'shopping-books-search',
@@ -8,7 +10,7 @@ import { BooksFacade } from '../../../store/books.fascade';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  loadedBooks$: any;
+  loadedBooks$: Observable<IBook[]>;;
   constructor(private router: Router, private bookFacade: BooksFacade){}
 
   ngOnInit(): void {
@@ -23,6 +25,3 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/bookdetails/',payload]);
   }
 }
-
-
-

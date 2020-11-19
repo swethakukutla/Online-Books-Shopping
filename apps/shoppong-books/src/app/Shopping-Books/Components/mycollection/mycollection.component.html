@@ -1,20 +1,20 @@
 <div>
   <mat-card *ngFor="let books of collectionBooks$ | async">
     <mat-card-header>
-      <mat-card-title>{{books.bookinfo[0].volumeInfo.title}}</mat-card-title>
+      <mat-card-title>{{books[0].bookinfo[0]?.volumeInfo.title}}</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="{{books.bookinfo[0].volumeInfo.imageLinks?.smallThumbnail}}">
     <mat-card-content>
       <p>
-        {{books.bookinfo[0].volumeInfo.description}}
+        {{books[0].bookinfo?.volumeInfo.description}}
       </p>
       <p><b>Written By: </b></p>
-      <p>{{books.bookinfo[0].volumeInfo.publisher}}</p><br><br>
+      <p>{{books[0].bookinfo?.volumeInfo.publisher}}</p><br><br>
       <p><b>Billing Address</b></p>
-      <p>Name: {{books.billingData.name}}</p>
-      <p>Email: {{books.billingData.email}}</p>
-      <p>Phone: {{books.billingData.phone}}</p>
-      <p>Address: {{books.billingData.address}}</p>
+      <p>Name: {{books[0].billingData.name}}</p>
+      <p>Email: {{books[0].billingData.email}}</p>
+      <p>Phone: {{books[0].billingData.phone}}</p>
+      <p>Address: {{books[0].billingData.address}}</p>
     </mat-card-content>
   </mat-card>
 </div>
