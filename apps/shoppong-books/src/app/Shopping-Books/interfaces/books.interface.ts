@@ -16,7 +16,8 @@ export interface IBook {
       smallThumbnail: string;
     };
   };
-  billingInfo: BillingInfo | undefined;
+  bookinfo: [IBook];
+  billingData: BillingInfo | undefined;
 }
 
 class BillingInfo {

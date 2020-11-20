@@ -1,0 +1,18 @@
+<div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
+    />
+    <mat-card-content>
+      <p>
+        {{ book.volumeInfo.description }}
+      </p>
+      <p>Written By:</p>
+      <p>{{ book.volumeInfo.publisher }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

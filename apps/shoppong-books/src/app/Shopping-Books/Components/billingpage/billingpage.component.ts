@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { PurchasedialogueboxComponent } from '../purchasedialoguebox/purchasedialoguebox.component';
 import { IBook } from '../../interfaces/books.interface';
 import { BooksFacade } from '../../../store/books.fascade';
-import { AddBooksToCollection } from '../../../store/books.actions';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'shopping-books-billingpage',
@@ -63,7 +62,7 @@ export class BillingpageComponent implements OnInit {
       }
     };
     this.cartBook$.forEach(book => {
-      collection.bookinfo.push(book);
+      collection.bookinfo.push(...book);
       collection.billingData = this.billing;
       this.bookFacade.addToCollection(collection);
     });
