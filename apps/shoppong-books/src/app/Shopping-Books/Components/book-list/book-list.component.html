@@ -1,18 +1,28 @@
-<div>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}"
-    />
-    <mat-card-content>
-      <p>
-        {{ book.volumeInfo.description }}
-      </p>
-      <p>Written By:</p>
-      <p>{{ book.volumeInfo.publisher }}</p>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="{{ book.volumeInfo.imageLinks?.smallThumbnail }}" />
+  <mat-card-content>
+    <p>
+      {{ book.volumeInfo.description }}
+    </p>
+    <p>Written By:</p>
+    <p>
+      {{ book.volumeInfo.publisher }}
+      <i
+        *ngIf="pageSelector === 'cart'"
+        class="material-icons"
+        (click)="selectedBookId(book.id)"
+        >remove_shopping_cart</i
+      >
+    </p>
+    <div *ngIf="pageSelector === 'collection'">
+      <p><b>Billing Address</b></p>
+      <p>Name: {{ book.billingData.name }}</p>
+      <p>Email: {{ book.billingData.email }}</p>
+      <p>Phone: {{ book.billingData.phone }}</p>
+      <p>Address: {{ book.billingData.address }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

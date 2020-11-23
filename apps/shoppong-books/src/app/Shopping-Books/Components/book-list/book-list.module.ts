@@ -11,6 +11,7 @@ import { BookListComponent } from './book-list.component';
   imports: [
     CommonModule,
     AppMaterialModule
-  ]
+  ],
+  exports: [BookListComponent]
 })
 export class BookListModule { }

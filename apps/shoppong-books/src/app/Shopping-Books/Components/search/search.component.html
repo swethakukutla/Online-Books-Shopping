@@ -9,10 +9,10 @@
 </div>
 
 <div class="content" fxLayout="row wrap" fxLayoutGap="20px grid">
-  <div *ngFor="let books of loadedBooks$ | async">
+  <div *ngFor="let book of loadedBooks$ | async">
     <shopping-books-book-list
-      [book]="books"
-      (click)="onBookSelected(books.id)"
+      [book]="book" [pageSelector]="'search'"
+      (click)="onBookSelected(book.id)"
     ></shopping-books-book-list>
   </div>
 </div>

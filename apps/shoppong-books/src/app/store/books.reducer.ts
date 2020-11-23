@@ -42,7 +42,7 @@ export const booksReducer = createReducer(
    on(Books.AddBooksToCollection, (state, {payload}) => {
     return Object.assign({
     ...state,
-    collectionItems: [...state.collectionItems, payload]})
+    collectionItems: [...state.collectionItems, ...payload]})
    })
 )
 

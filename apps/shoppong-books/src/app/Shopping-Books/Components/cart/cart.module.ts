@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppMaterialModule } from '../../../material.module';
 import { CartComponent } from './cart.component';
+import { BookListModule } from '../book-list/book-list.module';
 
 const cartRoutes: Routes = [
   { path: '', component: CartComponent }
@@ -16,6 +17,7 @@ const cartRoutes: Routes = [
   imports: [
     CommonModule,
     AppMaterialModule,
+    BookListModule,
     RouterModule.forChild(cartRoutes)
   ]
 })

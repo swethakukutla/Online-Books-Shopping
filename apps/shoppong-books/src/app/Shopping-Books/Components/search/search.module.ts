@@ -21,10 +21,6 @@ const searchRoutes: Routes = [
     AppMaterialModule,
     BookListModule,
     RouterModule.forChild(searchRoutes)
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
   ]
 })
 export class SearchModule { }

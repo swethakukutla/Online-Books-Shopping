@@ -55,16 +55,15 @@ export class BillingpageComponent implements OnInit {
 
   public setBillingAddress() {
     this.billing = this.billingForm.value;
-    const collection = {
-      bookinfo: [],
-      billingData: {
-        name: '',
-      }
-    };
-    this.cartBook$.forEach(book => {
-      collection.bookinfo.push(...book);
-      collection.billingData = this.billing;
-      this.bookFacade.addToCollection(collection);
+    const collection = [];
+
+    this.cartBook$.forEach(books => {
+      books.forEach(book => {
+        const bookTemp = JSON.parse(JSON.stringify(book));
+        bookTemp['billingData'] = this.billing;
+        collection.push(bookTemp);
+        this.bookFacade.addToCollection(collection);
+      })
     });
   }
 }

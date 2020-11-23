@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IBook } from '../../interfaces/books.interface';
 
 @Component({
@@ -7,8 +7,14 @@ import { IBook } from '../../interfaces/books.interface';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  @Input() book : IBook ;
+  @Input() book: IBook;
+  @Input() pageSelector: 'search' | 'cart' | 'collection';
+  @Output() emitSelectedBookId = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void { }
+
+  selectedBookId(id) {
+    this.emitSelectedBookId.emit(id);
+  }
 }
