@@ -15,19 +15,19 @@ export class BooksFacade{
   cartBooks$ = this.store.pipe(select(booksQuery.getCartBooks)) as Observable<IBook[]>;
   collectionBooks$ = this.store.pipe(select(booksQuery.getCollectionBooks)) as Observable<IBook[]>;
 
-  searchedBook(payload) {
+  searchedBook(payload: string) {
     this.store.dispatch(searchbook({ payload }));
   }
 
-  addToCart(payload) {
+  addToCart(payload: IBook) {
     this.store.dispatch(AddToCart({ payload }));
   }
 
-  removedBook(payload) {
+  removedBook(payload: IBook) {
     this.store.dispatch(RemoveFromCart({ payload }));
   }
 
-  addToCollection(payload) {
-    this.store.dispatch(AddBooksToCollection({payload }));
+  addToCollection(payload: IBook[]) {
+    this.store.dispatch(AddBooksToCollection({ payload }));
   }
 }

@@ -18,11 +18,11 @@ cartBooks$: Observable<IBook[]>;
   ngOnInit(): void {
     this.cartBooks$ = this.bookFacade.cartBooks$;
   }
-  goToBillingPage() {
+  goToBillingPage(): void {
     this.router.navigate(['/billingpage'])
   }
 
-  removeFromCart(id) {
+  removeFromCart(id: IBook): void {
     this.bookFacade.removedBook(id);
   }
 }

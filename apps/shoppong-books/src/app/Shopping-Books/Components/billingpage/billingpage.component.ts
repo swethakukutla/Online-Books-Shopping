@@ -18,10 +18,10 @@ export class BillingpageComponent implements OnInit {
   billingForm: FormGroup;
   cartBook$: Observable <IBook[]>;
   billing: {
-    name: '';
-    email: '';
-    phone: 0;
-    address: '';
+    name: string;
+    email: string;
+    phone: number;
+    address: string;
   }
 
 

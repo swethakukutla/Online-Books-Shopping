@@ -17,11 +17,11 @@ export class SearchComponent implements OnInit {
      this.loadedBooks$ = this.bookFacade.allBooks$;
   }
 
-  getBooks(payload){
+  getBooks(payload: string){
     this.bookFacade.searchedBook( payload );
   }
 
-  onBookSelected(payload) {
+  onBookSelected(payload: IBook) {
     this.router.navigate(['/bookdetails/',payload]);
   }
 }

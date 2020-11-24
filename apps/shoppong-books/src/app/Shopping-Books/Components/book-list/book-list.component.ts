@@ -14,7 +14,7 @@ export class BookListComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  selectedBookId(id) {
+  selectedBookId(id: string) {
     this.emitSelectedBookId.emit(id);
   }
 }

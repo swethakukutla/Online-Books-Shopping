@@ -95,7 +95,7 @@ describe('SearchComponent', () => {
       "textSnippet": "This hands-on guide introduces you to AngularJS, the open source JavaScript framework that uses Model–view–controller (MVC) architecture, data binding, client-side templates, and dependency injection to create a much-needed structure ..."
     }
   }];
-  let mockRouter = {
+  const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   }
 
