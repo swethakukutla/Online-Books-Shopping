@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     this.bookFacade.searchedBook( payload );
   }
 
-  onBookSelected(payload: IBook) {
+  onBookSelected(payload: string) {
     this.router.navigate(['/bookdetails/',payload]);
   }
 }

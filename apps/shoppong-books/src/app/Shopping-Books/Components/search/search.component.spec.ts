@@ -17,6 +17,7 @@ import { MemoizedSelector } from '@ngrx/store';
 import * as booksreducer from '../../../store/books.reducer';
 import { booksQuery } from '../../../store/books.selector';
 import { Router } from '@angular/router';
+import { BookListComponent } from '../book-list/book-list.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -101,7 +102,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchComponent],
+      declarations: [SearchComponent, BookListComponent],
       imports: [FormsModule, ReactiveFormsModule, BrowserModule, MatButtonModule, MatInputModule,
         NoopAnimationsModule, MatCardModule, MatIconModule, MatDialogModule, RouterTestingModule],
       providers: [ provideMockStore({ initialState }), BooksFacade, { provide: Router, useValue: mockRouter }]

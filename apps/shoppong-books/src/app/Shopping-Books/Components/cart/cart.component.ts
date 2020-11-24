@@ -22,7 +22,7 @@ cartBooks$: Observable<IBook[]>;
     this.router.navigate(['/billingpage'])
   }
 
-  removeFromCart(id: IBook): void {
+  removeFromCart(id: string): void {
     this.bookFacade.removedBook(id);
   }
 }

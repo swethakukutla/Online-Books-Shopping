@@ -13,6 +13,7 @@ import * as booksreducer from '../../../store/books.reducer';
 import { Router } from '@angular/router';
 import { booksQuery } from '../../../store/books.selector';
 import { MemoizedSelector } from '@ngrx/store';
+import { BookListComponent } from '../book-list/book-list.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;
@@ -96,7 +97,7 @@ describe('CartComponent', () => {
   }
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CartComponent],
+      declarations: [CartComponent, BookListComponent],
       imports: [BrowserModule, MatButtonModule, MatInputModule, MatCardModule, MatIconModule, RouterTestingModule.withRoutes([])],
       providers: [ provideMockStore({ initialState }), BooksFacade, { provide: Router, useValue: mockRouter }]
     })

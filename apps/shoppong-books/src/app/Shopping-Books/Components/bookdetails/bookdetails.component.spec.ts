@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
 import { BookdetailsComponent } from './bookdetails.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ import { BooksFacade } from '../../../store/books.fascade';
 import { MemoizedSelector } from '@ngrx/store';
 import * as booksreducer from '../../../store/books.reducer';
 import { booksQuery } from '../../../store/books.selector';
+import { Router } from '@angular/router';
 
 describe('BookdetailsComponent', () => {
   let component: BookdetailsComponent;
@@ -94,12 +95,16 @@ describe('BookdetailsComponent', () => {
     }
   }];
 
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [BookdetailsComponent],
       imports: [FormsModule, ReactiveFormsModule, BrowserModule, MatButtonModule, MatInputModule,
         NoopAnimationsModule, MatCardModule, MatIconModule, MatDialogModule, RouterTestingModule],
-      providers: [ provideMockStore({ initialState }), BooksFacade]
+      providers: [ provideMockStore({ initialState }), BooksFacade, { provide: Router, useValue: mockRouter }]
     })
       .compileComponents();
     store = TestBed.inject(MockStore);

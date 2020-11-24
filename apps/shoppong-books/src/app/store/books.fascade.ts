@@ -23,7 +23,7 @@ export class BooksFacade{
     this.store.dispatch(AddToCart({ payload }));
   }
 
-  removedBook(payload: IBook) {
+  removedBook(payload: string) {
     this.store.dispatch(RemoveFromCart({ payload }));
   }
 
